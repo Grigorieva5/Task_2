@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+tests/__pycache__/
+methods/__pycache__/
+.coverage
+.env
+.venv/
+.vscode/
+.idea/
+*.log
+allure_results/
+htmlcov/
+.allure/
+*.pyc
+
