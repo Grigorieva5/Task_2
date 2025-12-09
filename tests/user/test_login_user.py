@@ -21,8 +21,7 @@ class TestLoginrUser:
                 "name" in user_data["user"] and
                 "accessToken" in user_data and
                 "refreshToken" in user_data)
-        
-
+      
     @allure.title('Аторизация с неверным логином и паролем')
     @pytest.mark.parametrize("invalid_data", LOGIN_INVALID_DATA)
     def  test_login_user_false(self, invalid_data):

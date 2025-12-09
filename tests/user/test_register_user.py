@@ -11,8 +11,8 @@ from data import *
 class TestRegisterUser:
 
     @allure.title('Успешная регистрация пользователя')
-    def test_register_user_success(self):
-        user_data, status_code = UserMethods().post_create_user()
+    def test_register_user_success(self, create_user):
+        user_data, status_code = create_user
 
         assert (status_code == 200 and
                 user_data["success"] == True and
@@ -21,11 +21,7 @@ class TestRegisterUser:
                 "name" in user_data["user"] and
                 "accessToken" in user_data and
                 "refreshToken" in user_data)
-        
-        delete_result, delete_status = UserMethods().delete_user(token=user_data['accessToken']) 
-        assert delete_status == 202 and delete_result["success"] == True
-    
-        
+         
     @allure.title('Создание пользователя, который уже зарегистрирован')
     def test_register_dublicate_user(self):
         user_data, status_code = UserMethods().post_create_user(REGISTER_USER)

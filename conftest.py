@@ -1,5 +1,6 @@
 import pytest
 from methods.order_methods import OrderMethods
+from methods.user_methods import UserMethods
 from data import *
 
 
@@ -25,3 +26,11 @@ def clean_order():
                 OrderMethods().delete_order(order_id, token)
             except:
                 pass
+
+@pytest.fixture
+def create_user():
+    user_data, status_code = UserMethods().post_create_user()
+    
+    yield user_data, status_code
+
+    UserMethods().delete_user(token=user_data['accessToken'])            
